@@ -358,7 +358,8 @@ export class WygEditorComponent implements ControlValueAccessor, AfterViewInit {
         };
 
         // Create a wysiwyg instance
-        this.instance = $(this.host.nativeElement).wysiwyg(config extend myconfig);
+        const mergedConfig = Object.assign({}, myconfig, config);
+        this.instance = $(this.host.nativeElement).wysiwyg(mergedConfig);
 
         // Set initial value
         $(ele).wysiwyg('shell').insertHTML(this.initialValue);
