@@ -358,6 +358,9 @@ export class WygEditorComponent implements ControlValueAccessor, AfterViewInit {
         };
 
         // Create a wysiwyg instance
+        if(! (config instanceof Object)) {
+            config = JSON.parse(config);
+        }
         const mergedConfig = Object.assign({}, myconfig, config);
         this.instance = $(this.host.nativeElement).wysiwyg(mergedConfig);
 
